@@ -97,6 +97,7 @@ Sometimes there won't be an argument so the line may just be:
 
 Open `https://71z1g.sse.codesandbox.io/`. Once loaded there should be a query already there for you to try by pressing the play button. 
 
+![Sample Output](https://github.com/will-sloan/sysc3010-techmemo/blob/main/images/image.png)
 After running the default query, try the one below if they are different:
 ```
 query GetDogs {
