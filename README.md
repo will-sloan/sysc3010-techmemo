@@ -2,26 +2,44 @@
 Please note the code for this can be found here: `https://github.com/will-sloan/sysc3010-techmemo/blob/main/App.js`
 ## Motivation
 
+Often when interacting with a database, it is better to have a layer that seperates the user from the database. In this layer, you write out all the possible things the user could need, then make it accessible to them. This is the purpose of GraphQL, having a front end for the database so that you know what the users can and cannot do. GraphQL has other benefits like having a clean interface for testing and making the requests simple to follow so there are no mix ups ini what a request will receive. 
+
+Visit their website for more info: https://graphql.org/
 
 ## Set up
-Assuming npm is installed.  
-Assume Visual Studio code is installed.  
-Assuming node is installed.  
-Assuming the reader has a Android device simulator.   
+
+For this tutorial, we assume you have the following installed: npm, Visual Studio Code, Node.js, and an Android device simulator. 
+
+Instruction for doing so can be found [here](https://reactnative.dev/docs/environment-setup) under `React Native CLI Quickstart`. 
+
+We will be using the following GraphQL server for testing: https://71z1g.sse.codesandbox.io/
 
 ## Make React Native project
 
+First we must install `npx` which will be used for create and running our app. 
+
 `npm install -g npx`
 
+Then use it to create an app, select `Y` if you are prompted to install `React Native`. 
+
 `npx react-native init MyDemoApp`
+
+Enter its directory
 
 `cd MyDemoApp` 
 
 
 ## ApolloClient
+Apollo client is a library which we will use to interact with our GraphQL server. 
+
+Once inside the directory, we need to install some `GraphQL` dependencies.
+
 `npm install @apollo/client graphql`
 
 We will follow an example similar to the Apollo getting started example except a bit more practical. 
+
+Open Visual Studio Code by running the folliwng in your terminal:  
+`code .`
 
 Open `App.js` and delete everything. 
 At the top add:
@@ -40,9 +58,9 @@ import {
 } from '@apollo/client';
 ```
 	
-Above imports all the modules that we will use in this tutoiral. What each one of these things does, will be explained once they are used in the project. 
+The code above imports all the modules that we will use in this tutorial. 
 Next, we need to create the ApolloClient object which we will use to interact with our GraphQL server. 
-Below `@apollo/client` put:
+Below `@apollo/client` in `App.js` put:
 ``` javascript
 const client = new ApolloClient({
  uri: 'https://71z1g.sse.codesandbox.io/',
@@ -50,9 +68,9 @@ const client = new ApolloClient({
 });
 ```
 
-The `uri` we used above, connects to an open GraphQL server which we can use for some brief testing. `cache` is used for local storage of information that is retrieved from a GraphQL request. 
+The `uri` we used above, connects to an open GraphQL server which we can use for some testing. `cache` is used for local storage of information that is retrieved from a GraphQL request. 
 
-### GraphQL basics
+### GraphQL Basics
 From their website:
 ```
 GraphQL is a query language for your API, and a server-side runtime for executing queries using a type system you define for your data.
@@ -134,6 +152,7 @@ module.exports = {
   },
 };
 ```
+Save both `App.js` and `metro.bundled.js`. 
 
 Now we are ready to run our code. Make sure your android simulator is running, then in a terminal run:
 `npx react-native run-android`
@@ -145,7 +164,7 @@ You should see:
 With our setup complete, we can start with some GraphQL requests.
 
 ## Queries in GraphQL
-Now we have to create a query in javascript. To so this we use `gql`. Copy below and paste it below where the client was declared. 
+To start, we have to create a query in javascript. To so this we use `gql` which is used to define a `GraphQL` request in javascript. Copy below and paste it below where the client was declared. 
 ``` javascript
 const GET_DOGS = gql`
   query GetDogs {
@@ -156,8 +175,9 @@ const GET_DOGS = gql`
   }
 `;
 ```
+This query is the same one we tried before, without the `displayImage`. 
 
-Next, add the code below the query. 
+Next, add the following code below the query. 
 
 ``` javascript
 const MyApp = () => {
@@ -178,9 +198,11 @@ const MyApp = () => {
   return (<Text>{firstResult}</Text>);
 }
 ```
-Above declares a new component which will use `useQuery` to make a request using the `GET_DOGS` query we have declared. 
+Above declares a new component which will use `useQuery` to make a request with the `GET_DOGS` query we have declared. 
 All is left is to update our App declaration.
 Replace `<Text>Hello World</Text>`  with `<MyApp/>`
+
+Remember to save the file. 
 
 Now in your Metro bundler terminal press `r`:
 
