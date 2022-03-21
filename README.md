@@ -4,14 +4,17 @@ Please note the code for this can be found here: `https://github.com/will-sloan/
 
 
 ## Set up
-Assuming npm is installed.
-Assume Visual Studio code is installed.
-Assuming node is installed.
-Assuming the reader has a Android device simulator. 
+Assuming npm is installed.  
+Assume Visual Studio code is installed.  
+Assuming node is installed.  
+Assuming the reader has a Android device simulator.   
 
 ## Make React Native project
+
 `npm install -g npx`
+
 `npx react-native init MyDemoApp`
+
 `cd MyDemoApp` 
 
 
@@ -87,7 +90,8 @@ query GetDogs {
 ```
 
 The above query calls the `dogs` query, asking for all dogs which are stored in the database. `id` and `breed` are used to select information we want from the results, in this case only the id and breed name. We can get more information about the dogs by adding `displayImage` below `breed`. Try running it with `displayImage`, you should see:
-![[Pasted image 20220321143855.png]]
+
+![Sample Output](https://github.com/will-sloan/sysc3010-techmemo/blob/main/images/sample_query_output.png)
 
 ## Integrating with React Native
 Now that we have a basic understanding of GraphQL, lets integrate it with our app. 
@@ -135,7 +139,8 @@ Now we are ready to run our code. Make sure your android simulator is running, t
 `npx react-native run-android`
 
 You should see:
-![[Pasted image 20220321113235.png]]
+
+![Hello World](https://github.com/will-sloan/sysc3010-techmemo/blob/main/images/hello_world_phone.png)
 
 With our setup complete, we can start with some GraphQL requests.
 
@@ -179,17 +184,20 @@ Replace `<Text>Hello World</Text>`  with `<MyApp/>`
 
 Now in your Metro bundler terminal press `r`:
 
-![[Pasted image 20220321144547.png]]
+![Metro Bundler](https://github.com/will-sloan/sysc3010-techmemo/blob/main/images/metro_terminal.png)
 
 Your app should reload and a dog breed should be displayed like: 
-![[Pasted image 20220321144641.png]]
+
+![Final Output](https://github.com/will-sloan/sysc3010-techmemo/blob/main/images/final_phone.png)
 
 ## Conclusion
 This tutorial has only covered the very basics of getting the app set up in a way that you can create queries. Next steps could be to display more of the information that you have retrieved. Or you could add `displayImage` to the request and try displaying the images in the app. Here are some links for getting you started in that direction:
-Images: `https://reactnative.dev/docs/image`
-Walkthrough: `https://www.apollographql.com/docs/react/data/queries/`
+
+Images: `https://reactnative.dev/docs/image`  
+Walkthrough: `https://www.apollographql.com/docs/react/data/queries/`  
 
 We haven't even implemented mutations yet, or passed arguments to queries. If you'd like to learn more about that check out these links:
-Mutations: `https://www.apollographql.com/docs/react/data/mutations`
-Queries: `https://www.apollographql.com/docs/react/data/queries/`
+
+Mutations: `https://www.apollographql.com/docs/react/data/mutations`  
+Queries: `https://www.apollographql.com/docs/react/data/queries/`  
 
